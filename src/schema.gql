@@ -1,0 +1,33 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type College {
+  id: Int!
+  name: String!
+  students: [Student!]!
+}
+
+type Subject {
+  name: String!
+}
+
+type Mark {
+  marksObtained: Float!
+}
+
+type Student {
+  id: Int!
+  name: String!
+  college: College!
+  marks: [Mark!]!
+}
+
+type Query {
+  findAllColleges: [College!]!
+  findCollege(id: Float!): College!
+  findAllSubjects: [Subject!]!
+  findSubject(id: Float!): Subject!
+  findAllMarks: [Mark!]!
+  findMark(id: Float!): Mark!
+}
