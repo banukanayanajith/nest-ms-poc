@@ -23,7 +23,20 @@ type Student {
   marks: [Mark!]!
 }
 
+type SubjectMarksDto {
+  subjectName: String!
+  marks: Int!
+}
+
+type StudentWithMarksDto {
+  id: Int!
+  name: String!
+  subjects: [SubjectMarksDto!]!
+}
+
 type Query {
+  studentsWithMarks: [StudentWithMarksDto!]!
+  student(id: Int!): Student!
   findAllColleges: [College!]!
   findCollege(id: Float!): College!
   findAllSubjects: [Subject!]!

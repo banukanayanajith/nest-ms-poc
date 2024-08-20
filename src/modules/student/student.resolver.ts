@@ -1,24 +1,19 @@
-import { Resolver, Query, Args } from '@nestjs/graphql';
+import { Resolver, Query, Args, Int } from '@nestjs/graphql';
 import { StudentService } from './student.service';
 import { Student } from './entities/student.entity';
-import { StudentWithMarksDto } from './dto/student.mark.dto';
+import { StudentWithMarksDto } from './dto/student-with-marks.dto';
 
 @Resolver(() => Student)
 export class StudentResolver {
   constructor(private readonly studentService: StudentService) {}
 
-  @Query(() => [Student])
-  findAllStudents() {
-    return this.studentService.findAll();
-  }
-
-  @Query(() => Student)
-  findStudent(@Args('id') id: number) {
-    return this.studentService.findOne(id);
-  }
-
   @Query(() => [StudentWithMarksDto])
   async studentsWithMarks(): Promise<StudentWithMarksDto[]> {
     return this.studentService.findAllWithMarks();
+  }
+
+  @Query(() => Student)
+  async student(@Args('id', { type: () => Int }) id: number): Promise<Student> {
+    return this.studentService.findOne(id);
   }
 }

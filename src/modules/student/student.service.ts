@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Student } from './entities/student.entity';
-import { StudentWithMarksDto } from './dto/student.mark.dto';
+import { StudentWithMarksDto } from './dto/student-with-marks.dto';
 
 @Injectable()
 export class StudentService {

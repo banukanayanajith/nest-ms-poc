@@ -5,7 +5,7 @@ import { Field, Int, ObjectType } from '@nestjs/graphql';
 export class SubjectMarksDto {
   @Field()
   @IsString()
-  subjectName: string;
+  name: string;
 
   @Field(() => Int)
   @IsInt()
